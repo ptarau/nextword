@@ -1,0 +1,1 @@
+ python arrow.py train --data sentences.txt --out_dir arrow_ckpts --seq_len 64
