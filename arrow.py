@@ -17,7 +17,7 @@ NEW (this version):
 
 Usage:
   Train:
-    python arrow.py train --data file.txt --out_dir ckpts --seq_len 64
+    python arrow.py train --data file_sents.txt --out_dir ckpts --seq_len 64
   Resume:
     python arrow.py train --data file.txt --out_dir ckpts --resume ckpts/ckpt_latest.pt
   Generate (REPL):
