@@ -1,1 +1,1 @@
- python arrow.py train --data sentences.txt --out_dir arrow_ckpts --seq_len 64
+ python arrow.py train --data data/the_eyes_sents.txt --out_dir ckpts --seq_len 64

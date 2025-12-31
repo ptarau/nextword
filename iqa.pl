@@ -140,3 +140,15 @@ go3:-
   to_impl_db('data/guermantes_sents.txt'),
   qa('princess'),
   qa_repl(qa).
+
+go4:-
+  %file2sents_to_file('data/guermantes.txt','data/guermantes_sents.txt'),
+  to_impl_db('data/crystal_sents.txt'),
+  qa('the pilot'),
+  qa_repl(qa).
+
+go5:-
+  %file2sents_to_file('data/guermantes.txt','data/guermantes_sents.txt'),
+  to_impl_db('data/the_eyes_sents.txt'),
+  qa('his eyes'),
+  qa_repl(qa).

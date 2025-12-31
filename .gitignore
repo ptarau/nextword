@@ -1,4 +1,5 @@
 .DS_Store
 data/
 ckpts/
+texts/
 venv/
