@@ -652,11 +652,14 @@ def repl_generate(
                 for i, (suf_words, sc, line_no, start, end) in enumerate(hits, 1):
                     if show_meta:
                         print(
-                            f"[{i}] (line {line_no}, span {start}-{end}, score {sc:.3f}) "
-                            f"{' '.join(suf_words)}"
-                        )
+                            f"[{i}] (line {line_no-1}, score {sc:.3f}) "
+                            f"<{' '.join(suf_words)}>"                 
+                        )                  
                     else:
                         print(f"[{i}] {' '.join(suf_words)}")
+                    sent_line = ' '.join(sentences[line_no - 1])
+                    print('-->\n',sent_line,"\n")
+
                 continue
 
         # Fallback to free beam completion (still useful when cue isn't present).
