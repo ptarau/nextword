@@ -1,1 +1,1 @@
-python arrow.py train --data "data/$1_sents.txt" --out_dir "ckpts/$1/"
+time python arrow.py train --data "data/$1_sents.txt" --out_dir "ckpts/$1/"
