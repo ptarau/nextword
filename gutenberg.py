@@ -27,15 +27,15 @@ def fetch(id_no, title):
 
 def main():
     pass
-    # fetch(28698, "crystal")
-    # fetch(2600, "war_and_peace")
-    # fetch(73425, "guermantes")
-    # fetch(31516, "the_eyes")
-    # fetch(68283, "cthulhu")
-    # fetch(7849, "trial")
-    # fetch(4300, "ulysses")
-    # fetch(22566, "wizard_of_oz")
-    # fetch(345, "dracula")
+    fetch(28698, "crystal")
+    fetch(2600, "war_and_peace")
+    fetch(73425, "guermantes")
+    fetch(31516, "the_eyes")
+    fetch(68283, "cthulhu")
+    fetch(7849, "trial")
+    fetch(4300, "ulysses")
+    fetch(22566, "wizard_of_oz")
+    fetch(345, "dracula")
 
 
 if __name__ == "__main__":
