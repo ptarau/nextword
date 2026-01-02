@@ -218,6 +218,15 @@ sh6:-
   show_proof(A,B),
   show_proof(B,A).
 
+
+sh6a:-
+  ppp('S combinator'),nl,
+  A=(db->(query->answer)),
+  B=((db->query)->(db->answer)),
+  show_proof(A,B),
+  show_proof(B,A).
+
+
 % S
 % l(A, l(B, l(C, a(A, l(_, l(D, a(C, a(D, l(_, B)))))))))
 it6:-

@@ -653,12 +653,12 @@ def repl_generate(
                     if show_meta:
                         print(
                             f"[{i}] (line {line_no-1}, score {sc:.3f}) "
-                            f"<{' '.join(suf_words)}>"                 
-                        )                  
+                            f"<{' '.join(suf_words)}>"
+                        )
                     else:
                         print(f"[{i}] {' '.join(suf_words)}")
-                    sent_line = ' '.join(sentences[line_no - 1])
-                    print('-->\n',sent_line,"\n")
+                    sent_line = " ".join(sentences[line_no - 1])
+                    print("-->\n", sent_line, "\n")
 
                 continue
 
@@ -878,7 +878,7 @@ def build_parser() -> argparse.ArgumentParser:
         "--resume_optim", action="store_true", help="also resume optimizer state"
     )
     pt.add_argument("--d_model", type=int, default=256)
-    pt.add_argument("--seq_len", type=int, default=64)
+    pt.add_argument("--seq_len", type=int, default=256)
     pt.add_argument("--batch_size", type=int, default=32)
     pt.add_argument("--lr", type=float, default=3e-4)
     pt.add_argument("--weight_decay", type=float, default=0.01)
@@ -935,6 +935,37 @@ def main() -> None:
         generate(args)
     else:
         raise RuntimeError("Unknown command")
+
+
+def do_train(source_name: str) -> None:
+    source = f"data/{source_name}_sents.txt"
+    args = build_parser().parse_args(
+        [
+            "train",
+            "--data",
+            f"data/{source_name}_sents.txt",
+            "--out_dir",
+            f"ckpts/{source_name}/",
+            "--max_steps",
+            "5000",
+        ]
+    )
+    train(args)
+
+
+def do_infer(source_name: str) -> None:
+    source = f"data/{source_name}_sents.txt"
+    args = build_parser().parse_args(
+        [
+            "generate",
+            "--data",
+            f"data/{source_name}_sents.txt",
+            "--out_dir",
+            f"ckpts/{source_name}/",
+            "--repl",
+        ]
+    )
+    train(args)
 
 
 if __name__ == "__main__":

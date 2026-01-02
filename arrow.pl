@@ -41,6 +41,15 @@ isuff0(Xs->X,(Ys->X)):-
 isufpref-->isuff,ipref.
 
 
+subformula(Formula,SubF):-
+  distinct(SubF,subformula_(Formula,SubF)).
+
+subformula_(X,X).
+subformula_(X->_Y,SubF) :-
+    subformula_(X,SubF).
+ subformula_(_X->Y,SubF) :-
+    subformula_(Y,SubF).
+
 infer_from(QF,Formula,Pref+Suff) :-
     isuff(Formula,Suff),QF\==Suff,
     ipref(Suff,Pref),QF\==Pref,QF\==Suff,
@@ -171,13 +180,13 @@ call_qa(QA,S) :-
 
 
 go1:-
-  %file2sents_to_file('data/kafka.txt','data/kafka_sents.txt'),
+
   to_impl_db('data/kafka_sents.txt'),
   qa('like a dog'),
   qa_repl(qa).
 
 go2:-
-  %file2sents_to_file('data/war_and_peace.txt','data/war_and_peace_sents.txt'),
+
   to_impl_db('data/war_and_peace_sents.txt'),
   qa('why did Kutuzov'),
   qa_repl(qa).
@@ -198,4 +207,11 @@ go5:-
   %file2sents_to_file('data/guermantes.txt','data/guermantes_sents.txt'),
   to_impl_db('data/the_eyes_sents.txt'),
   qa('his eyes'),
+  qa_repl(qa).
+
+query(DocName,Query):-
+  atomic_list_concat(['data/',DocName,'_sents.txt'],FileName),
+  writeq(FileName),nl,
+  to_impl_db(FileName),
+  qa(Query),
   qa_repl(qa).

@@ -13,7 +13,7 @@ def to_ascii(text):
     return normalized.encode("ascii", "ignore").decode("ascii")
 
 
-def main(id_no, title):
+def fetch(id_no, title):
     # This gets a book by its gutenberg id number
     os.makedirs("data/", exist_ok=True)
     raw_book = gutenbergpy.textget.get_text_by_id(id_no)  # with headers
@@ -25,9 +25,18 @@ def main(id_no, title):
     print(len(raw_book))
 
 
-if __name__ == "__main__":
+def main():
     pass
-    main(28698, "crystal")
-    main(2600, "war_and_peace")
-    main(73425, "guermantes")
-    main(31516, "the_eyes")
+    # fetch(28698, "crystal")
+    # fetch(2600, "war_and_peace")
+    # fetch(73425, "guermantes")
+    # fetch(31516, "the_eyes")
+    # fetch(68283, "cthulhu")
+    # fetch(7849, "trial")
+    # fetch(4300, "ulysses")
+    # fetch(22566, "wizard_of_oz")
+    # fetch(345, "dracula")
+
+
+if __name__ == "__main__":
+    main()
