@@ -7,40 +7,49 @@ Both show the retrieval of the context and the actual sentence matvching the que
 As our tokens are lower case words, they need to be an exact subsequence occurring in
 one of the sentences for sucessful retrival.
 
-to fetch files from guttenberg.org
-use guttenberg.py
+to fetch files from guttenberg.org to ```data``` folder do:
 
-Try out:
+```
+python guttenberg.py
+```
+
+The try out for the Prolog-based QA:
 
 ```bash
 swipl -s arrow.pl
 
-go1.
+?- query(war_and_peace,napoleon).
 ...
-go5.
+?-query(dracula,'the castle').
+...
 
 ```
 
-Try
+After training with ```arrow.py``` on the files in ```data```:
 
 ```bash
-t_guermantes.sh
-
-t_war_and_peace.sh
-
-t_eyes.sh*
+./train.sh the_ayes
+...
+./train.sh dracula
+...
+./train.sh war_and_peace
+...
 ```
 
-for training with ```arrow.py```
-
-and
+and for inference with ```arrow.py``` on the trained checkpoints:
 
 ```bash
-i_guermantes.sh
-
-i_war_and_peace.sh
-
-i_arrow.sh
+./generate.sh the_ayes
+...
+./generate.sh dracula
+...
+./generate.sh war_and_peace
+...
 ```
 
-for inference with ```arrow.py```.
+#### Enjoy,
+
+Paul Tarau
+
+Jan 1, 2026
+
