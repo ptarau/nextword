@@ -4,3 +4,4 @@ ckpts/
 texts/
 venv/
 history.txt
+__pycache__/

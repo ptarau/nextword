@@ -965,7 +965,7 @@ def do_infer(source_name: str) -> None:
             "--repl",
         ]
     )
-    train(args)
+    generate(args)
 
 
 if __name__ == "__main__":
