@@ -21,8 +21,9 @@ def fetch(id_no, title):
     with open(f"data/{title}.txt", "w") as f:
         f.write(to_ascii(clean_book.decode("utf-8")))
     file2sents(f"data/{title}.txt", f"data/{title}_sents.txt")
-    print(len(clean_book))
-    print(len(raw_book))
+    print("raw sents", len(raw_book))
+    print("clean sents", len(clean_book))
+    print(f"fetched to: data/{title}_sents.txt")
 
 
 def main():
