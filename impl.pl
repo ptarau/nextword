@@ -318,4 +318,25 @@ other_impl:-
   ppt(Proof),nl,
   qqq(Proof).
 
+subf_impl:-
+  % even vs. odd length suffixes
+  F=((((((((a->b)->c)->d)->e)->f)->p)->q)->r),
+  write('Subformulas of: '),write(F),nl,nl,
+  isufpref(F,PS),F\=PS,
+  (iprove(F->PS) % even length
+  ;
+  iprove(PS->F) % odd length
+  ),
+  write(PS),nl,
+  fail;true.
+/*
+TODO: combine pref+suf to see which combination implies formula
+
+?- F=((((a->p)->q)->r)->s),P=(a->p), iprove(F->P->((q->r)->s)).
+F = ((((a->p)->q)->r)->s),
+P = (a->p).
+
+also if F implies Bloc1->Bloc2, then we can try
+recursing on Bloc1 and Bloc2 to find smaller implications
+*/
 c:-make.
