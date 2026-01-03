@@ -166,24 +166,18 @@ it3:-
   ppt(YT),
   ppt(ZT).
 
-it3a:-
+sh_multi:-
   X=(((('E'->a)->b)->c)),
-  Z=((a->b)->c),
-  Impl=('E'->(X->Z)),
-  lprove(Impl,Proof ),
-  qqq(Proof),
-  to_lambda(Proof).
+  Y=((a->b)->c),
+  %Impl=('E'->(X->Z)),
+  show_proof('E',(X->Y)).
 
 
-it3b:-
+shx:-
+  % nested implies simple:
   X=(((('E'->p)->q))),
   Y=(p->q),
-  Impl=(X->Y),
-  lprove(Impl,Proof ),
-  qqq(Proof),
-  ppt(Impl),
-  ppt(Proof),
-  to_lambda(Proof).
+  show_proof(X,Y).
 
 
 
@@ -242,6 +236,8 @@ shlr:-
     Left=((((a->b)->c)->d)->e),
     Right=(a->(b->(c->(d->e)))),
     show_proof(Left,Right).
+
+
 
 left_impl_right:-
   Left=((((a->b)->c)->d)->e),

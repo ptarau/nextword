@@ -74,7 +74,7 @@ lqa(Words,ISent):-
 
 %% finds in database a sentence whose implication chain
 %% has as prefix of a suffix ainside an implication chain in the dbase
- iqa(LeftImplQuery,ISent):-
+iqa(LeftImplQuery,ISent):-
    isent(ISent), % assumes isent/1 database
    distinct(ISent,isufpref(ISent,LeftImplQuery)).
 
