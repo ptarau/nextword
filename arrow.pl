@@ -37,9 +37,9 @@ isuff0(_->X,X).
 isuff0(Xs->X,(Ys->X)):-
    isuff0(Xs,Ys).
 
-%% extracts a prefix of a suffixof implication chain
+%% extracts a prefix of a suffix (or the other way around)of implication chain
 isufpref-->isuff,ipref.
-
+iprefsuf-->ipref,isuff. % same overall results - n(n+1)/2 total
 
 subformula(Formula,SubF):-
   distinct(SubF,subformula_(Formula,SubF)).
