@@ -315,6 +315,7 @@ other_impl:-
   qqq(Proof).
 
 subf_impl:-
+  % suffixes imply or are implied by the formula
   % even vs. odd length suffixes
   F=((((((((a->b)->c)->d)->e)->f)->p)->q)->r),
   write('Subformulas of: '),write(F),nl,nl,
@@ -326,6 +327,17 @@ subf_impl:-
   write(PS),nl,
   fail;true.
 /*
+
+r
+q->r
+(p->q)->r
+((f->p)->q)->r
+(((e->f)->p)->q)->r
+((((d->e)->f)->p)->q)->r
+(((((c->d)->e)->f)->p)->q)->r
+((((((b->c)->d)->e)->f)->p)->q)->r
+
+
 TODO: combine pref+suf to see which combination implies formula
 
 ?- F=((((a->p)->q)->r)->s),P=(a->p), iprove(F->P->((q->r)->s)).
