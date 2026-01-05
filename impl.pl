@@ -141,9 +141,9 @@ it2:-
 % seq implies bloc to bloc implication
 sh3:-
   ppp('Sequence implies Block to Block'),nl,
-  X=(((((p->q)->r)->a)->b)->c),
-  Y=((p->q)->r),
-  Z=((a->b)->c),
+  X=(((p->q)->a)->b),
+  Y=(p->q),
+  Z=(a->b),
   show_proof(X,(Y->Z)).
 
 it3:-
@@ -233,13 +233,13 @@ it6:-
 
 shlr:-
     ppp('Left nested implies right nested'),nl,
-    Left=((((a->b)->c)->d)->e),
-    Right=(a->(b->(c->(d->e)))),
+    Left=(((p->q)->r)),
+    Right=(p->q->r),
     show_proof(Left,Right).
 
 
 
-left_impl_right:-
+old_left_impl_right:-
   Left=((((a->b)->c)->d)->e),
   Right=(a->(b->(c->(d->e)))),
   Impl=(Left->Right),
