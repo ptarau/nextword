@@ -641,7 +641,7 @@ def repl_generate(
         line = line.strip()
         if not line:
             return
-
+        t1 = time.time()
         prompt_words = normalize_line_to_words(line)
 
         # Retrieval-first: return suffixes to end-of-sentence when possible.
@@ -680,6 +680,8 @@ def repl_generate(
                 print(f"[{i}] (beam score {sc:.3f}) {text}")
             else:
                 print(f"[{i}] {text}")
+        t2 = time.time()
+        print(f"(TIME: {t2 - t1:.2f}s)")
 
 
 # -------------------------
