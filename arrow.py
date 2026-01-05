@@ -31,6 +31,7 @@ import argparse
 import os
 import re
 import math
+import sys
 import time
 import atexit
 from dataclasses import dataclass
@@ -101,10 +102,10 @@ def write_prolog_file(txt_path: Path, original_sents: List[List[str]]) -> Path:
 # -------------------------
 
 
-def sufpref(xs: List[str]) -> Iterable[List[str]]:
+def sufpref(xs: List[str], max_len=5) -> Iterable[List[str]]:
     n = len(xs)
     for i in range(n):
-        for j in range(i + 1, n + 1):
+        for j in range(i + 1, min(n + 1, i + 1 + max_len)):
             yield xs[i:j]
 
 
@@ -928,6 +929,9 @@ def build_parser() -> argparse.ArgumentParser:
 
 
 def main() -> None:
+    if len(sys.argv) == 1:
+        print("choose train or generate, otherwise good to just test some function")
+        return
     args = build_parser().parse_args()
     if args.cmd == "train":
         train(args)
