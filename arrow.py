@@ -660,7 +660,8 @@ def repl_generate(
                         print(f"[{i}] {' '.join(suf_words)}")
                     sent_line = " ".join(sentences[line_no - 1])
                     print("-->\n", sent_line, "\n")
-
+                t2 = time.time()
+                print(f"(TIME: {t2 - t1:.2f}s)")
                 continue
 
         # Fallback to free beam completion (still useful when cue isn't present).
