@@ -46,7 +46,10 @@ and for inference with ```arrow.py``` on the trained checkpoints:
 ./generate.sh war_and_peace
 ...
 ```
+-----------
 
+*Note:* If you want ot work with other *.txt files, place them in folder data and
+(using ```to_sent_file.py```)  convert  ```data/<file>.txt to data/<file>_sents.txt```
 #### Enjoy,
 
 Paul Tarau

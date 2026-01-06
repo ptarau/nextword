@@ -28,6 +28,8 @@ def fetch(id_no, title):
 
 def main():
     pass
+    fetch(2701, "moby_dick")
+    return
     fetch(28698, "crystal")
     fetch(2600, "war_and_peace")
     fetch(73425, "guermantes")
