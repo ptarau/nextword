@@ -1,7 +1,18 @@
+sentence length 256 words, frgment max_length 5
+
+training:
+
+the_eyes	6m47.355s
 war_and_peace	7m52.297s
 ulysses	9m12.960s
 guermantes	6m43.017s
 wizard_of_oz	4m20.580s
-dracula	5m20.936s
+moby_dick	6m47.355s
+dracula5m20.936s
 cthulhu	4m43.505s
-crystal 5m54.452s
+crystal	5m54.452s
+
+inference:
+ 0.1-0.3 seconds independently of file size and query
+
+prolog:
