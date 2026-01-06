@@ -163,7 +163,8 @@ qa_loop(QA) :-
     -> true
     ; S == ""
     -> true
-    ; call_qa(QA, S),
+    ; time(call_qa(QA, S),Time),
+      format("(TIME: ~3f s)~n", [Time]),
       qa_loop(QA)
     ).
 
