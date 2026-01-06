@@ -13,6 +13,8 @@ cthulhu	4m43.505s
 crystal	5m54.452s
 
 inference:
- 0.1-0.3 seconds independently of file size and query
+0.1-0.3 seconds independently of file size and query
 
 prolog:
+1-2 sec to load db from sent_file
+0.5 secs to query

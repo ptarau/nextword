@@ -164,7 +164,7 @@ qa_loop(QA) :-
     ; S == ""
     -> true
     ; time(call_qa(QA, S),Time),
-      format("(TIME: ~3f s)~n", [Time]),
+      format("(TIME: ~2f s)~n", [Time]),
       qa_loop(QA)
     ).
 
@@ -182,7 +182,7 @@ call_qa(QA,S) :-
 
 go1:-
 
-  to_impl_db('data/kafka_sents.txt'),
+  to_impl_db('data/trial_sents.txt'),
   qa('like a dog'),
   qa_repl(qa).
 
@@ -216,3 +216,6 @@ query(DocName,Query):-
   to_impl_db(FileName),
   qa(Query),
   qa_repl(qa).
+
+% query unlikey to be answered, jjust continues with REPL
+query(Doc):-query(Doc,'what why when where and who we are').
