@@ -72,7 +72,6 @@ tprove(T):-
   hprove(H,Bs).
 
 
-
 %% variant of iprove that produces
 %% lambda terms as proofs
 
@@ -280,7 +279,17 @@ vorobiev:-
     ppt(XY),
     ppt(YX),
     ppt(TT).
+/*
+?- X=(((c -> d) -> b) -> (c->d)),Y=((d->b) -> (c->d)),to_term((X->Y),T).
+X = (((c->d)->b)->c->d),
+Y = ((d->b)->c->d),
+T = d(d(b(d(c)), c), b(d), c).
 
+?- X=(((c -> d) -> b) -> (c->d)),Y=((d->b) -> (c->d)),to_term((Y->X),T).
+X = (((c->d)->b)->c->d),
+Y = ((d->b)->c->d),
+T = d(d(b(d), c), b(d(c)), c).
+*/
 vorob4:-
    X=(c-> ((c -> d) -> b) ->d),
    Y=(c-> (d->b) ->d),
