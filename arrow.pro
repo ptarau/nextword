@@ -1,5 +1,5 @@
 % :-include('create_sents.pl').
-:-include('impl.pl').
+:-include('impl.pro').
 
 %% converts sentence (seen as a long prolog atom) to implication chain
 %% made of words (also prolog atoms)
