@@ -46,3 +46,40 @@ trimmed(BBs,BBs).
 ?- H=(r:-[(r:-[p, q]), (q:-[p]), p]),hprove(H).
 H = (r:-[(r:-[p, q]), (q:-[p]), p]).
 */
+
+tprove(A):-tprove(A,[]).
+
+tprove(A,Vs):-memberchk(A,Vs),!.
+tprove((BAs),Vs1):-BAs=..[B|As],!,append(As,Vs1,Vs2),tprove(B,Vs2).
+tprove(G,Vs1):-          % atomic(G), G not on Vs1
+  member((GXs),Vs1),functor(GXs,G,_),!, % if not, we just fail
+  select((BAs),Vs1,Vs2), % outer select loop
+  BAs=..[B|As],
+  select(A,As,Bs),         % inner select loop
+  tprove_imp(A,B,Vs2), % A element of the body of B
+  !,
+  ttrimmed((B:-Bs),NewB), % trim off empty bodies
+  tprove(G,[NewB|Vs2]).
+
+tprove_imp(DCs,B,Vs):- functor(DCs,D,_),!,BD=..[B,D],tprove(DCs,[BD|Vs]).
+tprove_imp(A,_B,Vs):-memberchk(A,Vs).
+
+ttrimmed((B:-[]),R):-!,R=B.
+ttrimmed(BBs,BBs).
+
+selarg(X,FXs,FYs):-
+   functor(FXs,F,_N),
+   arg(I,FXs,X),
+   findall(Y,(arg(J,FXs,Y),I=\=J),Ys),
+   FYs=..[F|Ys].
+   
+membarg(X,FXs):-arg(_I,FXs,X).
+
+membfun(F,FXs):-functor(F,FXs,_).
+
+argpend(FXs,FYs,FZs):-
+   functor(FXs,F,_),
+   findall(X,(arg(_,FXs,X);arg(_,FYs,X)),Zs),
+   FZs=..[F|Zs].
+   
+   
